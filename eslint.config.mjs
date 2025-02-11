@@ -12,6 +12,10 @@ const compat = new FlatCompat({
 const eslintConfig = [
 	{
 		files: ['**/*.js', '**/*.jsx'],
+		rules: {
+			// cr 에러를 막는 코드
+			'prettier/prettier': ['error', { endOfLine: 'auto' }],
+		},
 	},
 	...compat.config({
 		extends: ['next/core-web-vitals', 'plugin:prettier/recommended'],
