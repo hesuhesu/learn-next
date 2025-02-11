@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Image from 'next/image';
+import styles from './ProductList.module.css';
 
 function ProductList() {
 	const [products, setProducts] = useState();
@@ -14,7 +16,19 @@ function ProductList() {
 		<ul>
 			{products &&
 				products.map(product => {
-					return <li key={product.id}>{product.name}</li>;
+					return (
+						<li key={product.id} className={styles.item}>
+							<div>
+								<Image
+									src={product.imageUrl}
+									width={300}
+									height={250}
+									alt={product.name}
+								></Image>
+							</div>
+							<div>{product.name}</div>
+						</li>
+					);
 				})}
 		</ul>
 	);
